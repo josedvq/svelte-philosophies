@@ -1,16 +1,9 @@
-# react-philosophies
+# svelte-philosophies
 
-[![Epic React Exercises](https://img.shields.io/badge/Epic%20-React%20Exercises-orange.svg?logo=react&color=0abde3)](https://github.com/mithi/epic-react-exercises) [![buy me coffee](https://img.shields.io/badge/Buy%20me%20-coffee!-orange.svg?logo=buy-me-a-coffee&color=795548)](https://ko-fi.com/minimithi) [![PRs welcome!](https://img.shields.io/badge/%20📝%20Contributions-welcome-orange.svg?style=flat)](https://github.com/mithi/react-philosophies/issues) ![Forever a work in progress!](https://img.shields.io/badge/%20🚧%20Forever%20🚧%20%20-under%20construction-yellow.svg) [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
-
-
-If `react-philosophies` helped you in some way, consider [buying me a few cups of coffee ☕☕☕](https://ko-fi.com/minimithi). This motivates me to create more `React` "stuff"! 🙂
+Based on [react-philosophies](https://github.com/mithi/react-philosophies)
 
 > You have to think about what is the right way, even when you have the right idea of what the building blocks should be, there is huge flexibility in how you decide to put the whole system together. It is a craft... and it has a lot to do with valuing simplicity over complexity. Many people do have a tendency to make things more complicated than they need to be... The more stuff you throw into a system, the more complicated it gets and the more likely it is not going to work properly. - Barbara Liskov
 
-## Translations to other languages
-
-- [Chinese](https://github.com/Leecason/react-philosophies-cn) by [@Leecason](https://github.com/Leecason) [![Commit snapshot](https://img.shields.io/badge/v1.0.1-(d1984fd)-orange.svg?color=purple)](https://github.com/mithi/react-philosophies/blob/v1.0.1/README.md)
-- [Korean](https://github.com/lim-jiwoo/react-philosophies-ko) by [@lim-jiwoo](https://github.com/lim-jiwoo) [![Commit snapshot](https://img.shields.io/badge/v1.0.2-(fc49813)-orange.svg?color=purple)](https://github.com/mithi/react-philosophies/blob/v1.0.2/README.md)
 
 ## Table of Contents
 
@@ -29,16 +22,6 @@ It was actually difficult for me to separate my thoughts into the `design`, `per
 <br/>
 
 </details>
-
-<details>
-    <summary><strong>Thanks for all the PRs 🚜, coffee ☕, recommended readings 📚, and sharing of ideas 💡 (View contributors)</strong></summary>
-
----
-    
-#### ❤️ Comments, suggestions, violent reactions? I'd love to hear them!
-
-If there's something that you think should be part of my reading list or/and if you have great ideas that you think I should include here, don't hesitate to submit a PR or an issue. Particularly, I've included the section [`Insights shared by others`](#-5-insights-shared-by-others), should you wish to add your own ideas 🙂. Broken links, grammar, formatting, and typographical error corrections are also welcome. Any contribution to improve `react-philosophies` whether big or small is always appreciated.
-
 ---
     
 
