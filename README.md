@@ -4,62 +4,6 @@ Based on [react-philosophies](https://github.com/mithi/react-philosophies)
 
 > You have to think about what is the right way, even when you have the right idea of what the building blocks should be, there is huge flexibility in how you decide to put the whole system together. It is a craft... and it has a lot to do with valuing simplicity over complexity. Many people do have a tendency to make things more complicated than they need to be... The more stuff you throw into a system, the more complicated it gets and the more likely it is not going to work properly. - Barbara Liskov
 
-
-## Table of Contents
-
-0. [Introduction](#-0-introduction)
-1. [The Bare Minimum](#-1-the-bare-minimum)
-2. [Design for happiness](#-2-design-for-happiness)
-3. [Performance tips](#-3-performance-tips)
-4. [Testing principles](#-4-testing-principles)
-5. [Insights shared by others](#-5-insights-shared-by-others)
-
-<details>
-    <summary>The way this document is organized</summary>
-
-<br/>
-It was actually difficult for me to separate my thoughts into the `design`, `performance`, and `testing`. I noticed that lot of designs intended for maintainability also make your application faster and easier to test. Apologies if the discussion appears to be cluttered at times.
-<br/>
-
-</details>
----
-    
-
-#### ❤️ Special thanks to those who took the time contribute!
-    
-_Note, the following is not an exhaustive list, if you've contributed to this project and you don't see your name included, feel free to submit an PR that adds your name here. Thanks!_  
-    
-**💡 Comments and suggestions**
-
-- The [`r/reactjs`](https://www.reddit.com/r/reactjs/comments/pvwb6m/what_i_think_about_when_i_write_code_in_react) community
-- [Josh W Comeau](https://www.joshwcomeau.com/)
-- [@unpunnyfuns](https://github.com/unpunnyfuns)
-- [@cassidoo](https://github.com/cassidoo)
-
-**☕ Coffee!**
-
-- [Myles](https://github.com/myles-banner)
-- [Daniel](https://Ko-fi.com/home/coffeeshop?txid=7d71404a-fa0c-419d-9808-46ea520c913f&mode=public&img=ogsomeoneboughtme)
-- [Ankit](https://github.com/ankitwww)
-
-**🚜 Pull Requests**
-
-- [@fengzilong](https://github.com/fengzilong)
-- [@ankitwww](https://github.com/ankitwww)
-- [@dzakki](https://github.com/dzakki)
-- [@metonym](https://github.com/metonym)
-- [@sapegin](https://github.com/sapegin)
-
-**📚 Suggested Readings**
-
-- [ryanmcdermott/clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript), [3rs-of-software-architecture](https://github.com/ryanmcdermott/3rs-of-software-architecture), [ryanmcdermott/code-review-tips](https://github.com/ryanmcdermott/code-review-tips)
-- [Ben Moseley and Peter Marks: Out of the Tar Pit (2006)](http://curtclifton.net/papers/MoseleyMarks06a.pdf), recommended by [@icyjoseph](https://github.com/icyjoseph)
-- [`goldbergyoni/nodebestpractices`](https://github.com/goldbergyoni/nodebestpractices), recommended by [@rstacruz](https://github.com/rstacruz)
-- [Dan Abramov: Writing Resilient Components](https://overreacted.io/writing-resilient-components/), recommended by [Mon Quindoza](https://ph.linkedin.com/in/monquindoza)
-- [Matthieu Kern: Stop checking if your component is mounted](https://medium.com/doctolib/react-stop-checking-if-your-component-is-mounted-3bb2568a4934), recommended by [@Pierre-CLIND](https://github.com/Pierre-CLIND)
-    
-</details>
-
 ## 🧘 0. Introduction
 
 `react-philosophies` is:
@@ -68,16 +12,8 @@ _Note, the following is not an exhaustive list, if you've contributed to this pr
 - at the back of my mind whenever I review someone else's code or my own
 - just guidelines and NOT rigid rules
 - a living document and will evolve over time as my experience grows
-- mostly techniques which are variations of basic [refactoring](https://en.wikipedia.org/wiki/Code_refactoring) methods, [SOLID](https://en.wikipedia.org/wiki/SOLID) principles, and [extreme programming](https://en.wikipedia.org/wiki/Extreme_programming) ideas... just applied to `React` specifically 🙂
+- mostly techniques which are variations of basic [refactoring](https://en.wikipedia.org/wiki/Code_refactoring) methods, [SOLID](https://en.wikipedia.org/wiki/SOLID) principles, and [extreme programming](https://en.wikipedia.org/wiki/Extreme_programming) ideas...
 
-`react-philosophies` is inspired by various places I've stumbled upon at different points of my coding journey.
-
-Here are a few of them:
-
-- [Sandi Metz](https://sandimetz.com/)
-- [Kent C Dodds](https://kentcdodds.com)
-- [Zen of Python (PEP 20)](https://www.python.org/dev/peps/pep-0020/), [Zen of Go](https://dave.cheney.net/2020/02/23/the-zen-of-go)
-- [trekhleb/state-of-the-art-shitcode](https://github.com/trekhleb/state-of-the-art-shitcode), [droogans/unmaintainable-code](https://github.com/Droogans/unmaintainable-code), [sapegin/washingcode-book](https://github.com/sapegin/washingcode-book/)
 
 > As a seasoned developer I have certain quirks, opinions, and common patterns that I fall back on. Having to explain to another person why I am approaching a problem in a particular way is really good for helping me break bad habits and challenge my assumptions, or for providing validation for good problem solving skills. - [Coraline Ada Ehmke](https://where.coraline.codes)
 
@@ -85,15 +21,9 @@ Here are a few of them:
 
 ### 1.1 Recognize when the computer is smarter than you
 
-1. Statically analyze your code with [`ESLint`](https://eslint.org/). Enable the [`rule-of-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) and `exhaustive-deps` rule to catch `React`-specific errors.
+1. Statically analyze your code with [`ESLint`](https://eslint.org/). 
 2. Enable ["strict"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) mode. It's 2022. 
-3. [Be honest about your dependencies](https://overreacted.io/a-complete-guide-to-useeffect/#two-ways-to-be-honest-about-dependencies). Fix `exhaustive-deps` warnings / errors on your `useMemo`'s, `useCallback`'s and `useEffect`'s. You can try ["The latest ref pattern"](https://epicreact.dev/the-latest-ref-pattern-in-react) to keep your callbacks always up-to-date without unnecessary rerenders.
-4. [Always add keys](https://epicreact.dev/why-react-needs-a-key-prop) whenever you use `map` to display components.
-5. [Only call hooks at the top level](https://reactjs.org/docs/hooks-rules.html). Don’t call Hooks inside loops, conditions, or nested functions.
-6. Understand the warning "Can't perform state update on unmounted component". [facebook/react/pull/22114](https://github.com/facebook/react/pull/22114)
-7. Prevent the ["white screen of death"](https://kentcdodds.com/blog/use-react-error-boundary-to-handle-errors-in-react) by adding several [error boundaries](https://reactjs.org/docs/error-boundaries.html) at different levels of your application. You can also use them to send alerts to an error monitoring service such as [Sentry](https://sentry.io) if you want to. ([Accounting for Failures In React](https://brandondail.com/posts/fault-tolerance-react))
 8. There is a reason why errors and warnings are displayed in the console.
-9. Remember [`tree-shaking`](https://webpack.js.org/guides/tree-shaking/)!
 10. [Prettier](https://prettier.io/) (or an alternative) formats your code for you, giving you consistent formatting every time. You no longer need to think about it!
 11. [`Typescript`](https://www.typescriptlang.org/) and frameworks such as [`NextJS`](https://nextjs.org/) make your life so much easier.
 12. I highly recommend [Code Climate](https://codeclimate.com/quality/) (or similar) for open-source repositories or if you can afford it. I find that automatically-detected code smells truly motivates me to reduce the technical debts of the application I'm working on!
@@ -110,29 +40,6 @@ See also: [Write Less Code - Rich Harris](https://svelte.dev/blog/write-less-cod
 
 Needless to say, the more you add dependencies, the more code you ship to the browser. Ask yourself, are you actually using the features which make a particular library great?
 
-<details>
-    <summary><strong><em>🙈  Do you really need it?</strong> View examples of dependencies / code you might not need</em></summary>
-
-<br/>
-
-1. Do you really need [`Redux`](https://redux.js.org/)? It's possible. But keep in mind that React is already a [state management library](https://kentcdodds.com/blog/application-state-management-with-react).
-
-2. Do you really need [`Apollo client`](https://www.apollographql.com/docs/react/) ? Apollo client has many awesome features, like manual normalization. However, it will significantly increase your bundle size. If your application only makes use of features that are not unique to Apollo client , consider using a smaller library such as [`react-query`](https://react-query.tanstack.com/comparison) or [`SWR`](https://github.com/vercel/swr) (or none at all).
-
-3. [`Axios`](https://github.com/axios/axios)? Axios is a great library with features that are not easily replicable with native `fetch`. But if the only reason for using Axios is that it has a better looking API, then consider just using a wrapper on top of fetch (such as [`redaxios`](https://github.com/developit/redaxios) or your own). Determine whether or not your application is actually using Axios's best features.
-
-4. [`Decimal.js`](https://github.com/MikeMcl/decimal.js/)? Maybe [Big.js](https://github.com/MikeMcl/big.js/) or [other smaller libraries](https://www.npmtrends.com/big.js-vs-bignumber.js-vs-decimal.js-vs-mathjs) are sufficient.
-
-5. [`Lodash`](https://lodash.com/)/[`underscoreJS`](https://underscorejs.org/)? [you-dont-need/You-Dont-Need-Lodash-Underscore](https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore)
-
-6. [`MomentJS`](https://momentjs.com/)? [you-dont-need/You-Dont-Need-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs)
-
-7. You might not need `Context` for theming (`light`/`dark` mode), consider using [`css variables`](https://epicreact.dev/css-variables) instead.
-
-8. You might not even need `Javascript`. CSS is powerful. [you-dont-need/You-Dont-Need-JavaScript](https://github.com/you-dont-need/You-Dont-Need-JavaScript)
-<br/>
-
-</details>
 
 #### 1.2.2 Don't be clever. YAGNI!
 
@@ -163,7 +70,6 @@ If you recognize that something is wrong, fix it right then and there. But if it
 - ❌ Functions or methods with a large number of return statements
 - ❌ Duplicate code which is not identical but shares the same structure (e.g. variable names may differ)
 
-</details>
 
 Keep in mind that code smells don't necessarily mean that code should be changed. A code smell just informs you that you might be able to think of a better way to implement the same functionality.
 
@@ -172,44 +78,6 @@ Keep in mind that code smells don't necessarily mean that code should be changed
 > Is the CL more complex than it should be? Check this at every level of the CL—are individual lines too complex? Are functions too complex? Are classes too complex? “Too complex” usually means “can’t be understood quickly by code readers.” It can also mean “developers are likely to introduce bugs when they try to call or modify this code.”- [Google Engineering Practices: What to look for in a code review](https://google.github.io/eng-practices/review/reviewer/looking-for.html)
 
 
-**💁‍♀️ TIP: Simplify [complex conditionals](https://github.com/sapegin/washingcode-book/blob/master/manuscript/Avoid_conditions.md) and exit early if you can.**
-
-<details>
-    <summary>🙈 Example of early returns </summary>
-
-```tsx
-# ❌ Not-so-good
-
-if (loading) {
-  return <LoadingScreen />
-} else if (error) {
-  return <ErrorScreen />
-} else if (data) {
-  return <DataScreen />
-} else {
-  throw new Error('This should be impossible')
-}
-
-# ✅ BETTER
-
-
-if (loading) {
-  return <LoadingScreen />
-} 
-
-if (error) {
-  return <ErrorScreen />
-}
-
-if (data) {
-  return <DataScreen />
-}
-
-throw new Error('This should be impossible')
-```
-
-</details>
-
 **💁‍♀️ TIP: Prefer chained higher-order functions over loops**
 
 If there is no discernable performance difference and if possible, replace traditional loops with chained higher-order functions (`map`, `filter`, `find`, `findIndex`, `some`, etc) [Stackoverflow: What is the advantage of using a function over loops?](https://stackoverflow.com/questions/34402198/what-is-the-advantage-of-using-a-function-over-loops)
@@ -217,92 +85,6 @@ If there is no discernable performance difference and if possible, replace tradi
 
 ### 1.4 You can do better
 
-**💁‍♀️ TIP: Remember that you may not need to put your `state` as a dependency because you can pass a callback function instead.**
-
-You don't need to put `setState` (from `useState`) and `dispatch` (from `useReducer`) in your dependency array for hooks like `useEffect` and `useCallback`. ESLint will NOT complain because React guarantees their stability.
-
-<details>
-    <summary>🙈 View example</summary>
-
-```tsx
-❌ Not-so-good
-const decrement = useCallback(() => setCount(count - 1), [setCount, count])
-const decrement = useCallback(() => setCount(count - 1), [count])
-
-✅ BETTER
-const decrement = useCallback(() => setCount(count => (count - 1)), [])
-```
-
-</details>
-
-**💁‍♀️ TIP: If your `useMemo` or `useCallback` doesn't have a dependency, you might be using it wrong.**
-
-<details>
-    <summary>🙈 View example</summary>
- 
- <br />
- 
- ```tsx
- ❌ Not-so-good
-const MyComponent = () => {
-    const functionToCall = useCallback(x: string => `Hello ${x}!`,[])
-    const iAmAConstant = useMemo(() => { return {x: 5, y: 2} }, [])
-    /* I will use functionToCall and iAmAConstant */
-}
-        
-✅ BETTER 
-const I_AM_A_CONSTANT =  { x: 5, y: 2 }
-const functionToCall = (x: string) => `Hello ${x}!`
-const MyComponent = () => {
-    /* I will use functionToCall and I_AM_A_CONSTANT */
-}
-
-````
-</details>
-
-**💁‍♀️ TIP: Wrapping your custom context with a hook creates a better-looking API**
-
-Not only does it look better, but you also only have to import one thing instead of two.
-
-<details>
-    <summary>🙈 View example</summary>
-
- <br />
-
-❌ Not-so-good
-```tsx
-// you need to import two things every time 
-import { useContext } from "react"
-import { SomethingContext } from "some-context-package"
-
-function App() {
-  const something = useContext(SomethingContext) // looks okay, but could look better
-  // blah
-}
-```
-
-✅  Better
-```tsx
-  
-// on one file you declare this hook
-function useSomething() {
-  const context = useContext(SomethingContext)
-  if (context === undefined) {
-    throw new Error('useSomething must be used within a SomethingProvider')
-  }
-  return context
-}
-  
-// you only need to import one thing each time
-import { useSomething } from "some-context-package"
-
-function App() {
-  const something = useSomething() // looks better
-  // blah
-}  
-```
-
-</details>
 
 **💁‍♀️ TIP: Think about how your component will be used before coding it**
 
@@ -904,6 +686,9 @@ const ShopCategoryTile = ({
 
 </details>
 
+> Not only should a component have a single responsibility, it should also have a clear spot on the spectrum of abstraction. On one end, we have generic building blocks like `<Button>`, `<Heading>`, `<Modal>`. On the other end, we have one-off templates like `<Homepage>` and `<ContactForm>`. Every component should have a clear spot on this spectrum. A `<Button>` component shoudn't have a _user_ prop, since users are a higher-abstract concept and `Button` is a low-abstract component.
+
+
 ### 💖 2.4 Duplication is far cheaper than the wrong abstraction
 
 Avoid premature / inappropriate generalization. If your implementation for a simple feature requires a huge overhead, consider other options.
@@ -912,82 +697,13 @@ I highly recommend reading [Sandi Metz: The Wrong Abstraction](https://sandimetz
 > A particular type of complexity is over-engineering, where developers have made the code more generic than it needs to be, or added functionality that isn’t presently needed by the system. Encourage developers to solve the problem they know needs to be solved now, not the problem that the developer speculates might need to be solved in the future. The future problem should be solved once it arrives and you can see its actual shape and requirements in the physical universe. - [Google Engineering Practices: What to look for in a code review](https://google.github.io/eng-practices/review/reviewer/looking-for.html)
 
 See also: [KCD: AHA Programming](https://kentcdodds.com/blog/aha-programming), [C2 Wiki: Contrived Interfaces](https://wiki.c2.com/?ContrivedInterfaces)/[The Expensive Setup Smell](https://wiki.c2.com/?ExpensiveSetUpSmell)/[Premature Generalization](https://wiki.c2.com/?PrematureGeneralization)
-        
-## 🧘 3. Performance tips
-> Premature optimization is the root of all evil - Tony Hoare
-        
-> One accurate measurement is worth a thousand expert opinions. - Grace Hopper
 
-**TL;DR**
 
-1. **If you think it’s slow, prove it with a benchmark.** _"In the face of ambiguity, refuse the temptation to guess."_ The profiler of [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (Chrome extension) is your friend!
-2. Use `useMemo` mostly just for expensive calculations
-3. If you're going to use `React.memo`, `useMemo`, and `useCallback` for reducing re-renders, they shouldn't have many dependencies and the dependencies should be mostly primitive types.
-4. Make sure your `React.memo`, `useCallback` or `useMemo` is doing what you think it's doing (is it really preventing rerendering? Can you demonstrate empirically that using them on your case has significant performance gains? [Memoization can sometimes make your app worse](https://kentcdodds.com/blog/usememo-and-usecallback), so keep an eye on that!)
-5. Stop punching yourself every time you blink ([fix slow renders before fixing rerenders](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render))
 6. Putting your state as close as possible to where it's being used will not only make your code so much easier to read but it would also make your app faster (state colocation)
 7. `Context` should be logically separated, do not add too many values in one context provider. If any of the values of your context changes, all components consuming that context also rerenders even if those components don't use the specific value that was actually changed.
-8. You can optimize `context` by separating the `state` and the `dispatch` function
-9. Know the terms [`lazy loading`](https://nextjs.org/docs/advanced-features/dynamic-import) and [`bundle/code splitting`](https://reactjs.org/docs/code-splitting.html)
-10. Window large lists (with [`tannerlinsley/react-virtual`](https://github.com/tannerlinsley/react-virtual) or similar)
-11. A smaller bundle size usually also means a faster app. You can visualize the code bundles you've generated with tools such as [`source-map-explorer`](https://create-react-app.dev/docs/analyzing-the-bundle-size/) or [`@next/bundle-analyzer`](https://www.npmjs.com/package/@next/bundle-analyzer) (for NextJS).
-12. If you're going to use a package for your forms, I recommend [`react-hook-forms`](https://react-hook-form.com/). I think it is a great balance of good performance and good developer experience.
-
-<details>
-    <summary><strong>View selected KCD articles about performance</strong></summary>
 
 
-- [KCD: State Colocation will make your React app faster](https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster)
-- [KCD: When to `useMemo` and `useCallback`](https://kentcdodds.com/blog/usememo-and-usecallback)
-- [KCD: Fix the slow render before you fix the re-render](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render)
-- [KCD: Profile a React App for Performance](https://kentcdodds.com/blog/profile-a-react-app-for-performance)
-- [KCD: How to optimize your context value](https://kentcdodds.com/blog/how-to-optimize-your-context-value)
-- [KCD: How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
-- [KCD: One React Mistake that is slowing you down](https://epicreact.dev/one-react-mistake-thats-slowing-you-down)
-- [KCD: One simple trick to optimize React re-renders](https://kentcdodds.com/blog/optimize-react-re-renders)
-
-</details>
-
-## 🧘 4. Testing principles
-
-> Write tests. Not too many. Mostly integration. - Guillermo Rauch
-
-**TL;DR**
-
-1. Your tests should always resemble the way your software is used
-2. Make sure that you're not testing implementation details - things which users do not use, see, or even know about
-3. If your tests don't make you confident that you didn't break anything, then they didn't do their (one and only) job
-5. You'll know you implemented correct tests when you rarely have to change tests when you refactor code given the same user behavior
-5. For the front-end, you don't need 100% code coverage, about 70% is probably good enough. Tests should make you more productive not slow you down. Maintaining tests can slow you down. You get diminishing returns on adding more tests after a certain point
-6. I like using [Jest](https://jestjs.io/), [React testing library](https://testing-library.com/docs/react-testing-library/intro/), [Cypress](https://www.cypress.io/), and [Mock service worker](https://github.com/mswjs/msw)
+> Premature optimization is the root of all evil - Tony Hoare
         
-<details>
-    <summary><strong>View selected KCD articles about testing</strong></summary>
-
-- [KCD: Testing Implementation Details](https://kentcdodds.com/blog/testing-implementation-details)
-- [KCD: Stop mocking fetch](https://kentcdodds.com/blog/stop-mocking-fetch)
-- [KCD: Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
-- [KCD: Making your UI tests resilient to change](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
-- [KCD: Write fewer, longer tests](https://kentcdodds.com/blog/write-fewer-longer-tests)
-- [KCD: Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
-- [KCD: How to know what to test](https://kentcdodds.com/blog/how-to-know-what-to-test)
-- [KCD: Common Testing Mistakes](https://kentcdodds.com/blog/common-testing-mistakes)
-- [KCD: Why you've been bad about testing](https://kentcdodds.com/blog/why-youve-been-bad-about-testing)
-- [KCD: Demystifying Testing](https://kentcdodds.com/blog/demystifying-testing)
-- [KCD: UI Testing Myths](https://kentcdodds.com/blog/ui-testing-myths)
-- [KCD: Effective Snapshot Testing](https://kentcdodds.com/blog/effective-snapshot-testing)
-
-</details>
-
-## 🧘 5. Insights shared by others
-
-If you'd like to share some of the things you think about when you write React code that I didn't touch upon, you can submit a PR and add them to this section. 
-Thanks for taking the time to share your ideas! 
-        
-### [Josh W Comeau](https://www.joshwcomeau.com/) 
-
-> A similar principle I feel much more strongly about is not to pass _setters_ that have too much power. For example, I might pass an `updateEmail` function instead of a `setUser` function. I don't want random components to be able to _change_ things they don't have any business changing.
-
-> Not only should a component have a single responsibility, it should also have a clear spot on the spectrum of abstraction. On one end, we have generic building blocks like `<Button>`, `<Heading>`, `<Modal>`. On the other end, we have one-off templates like `<Homepage>` and `<ContactForm>`. Every component should have a clear spot on this spectrum. A `<Button>` component shoudn't have a _user_ prop, since users are a higher-abstract concept and `Button` is a low-abstract component.
 
 (Note, the above is taken from his response to my email... I really appreciate that he took the time to share his ideas 🙂)
