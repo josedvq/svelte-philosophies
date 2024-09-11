@@ -55,11 +55,7 @@ Related section: [2.4 Duplication is far cheaper than the wrong abstraction](#-2
 
 If you recognize that something is wrong, fix it right then and there. But if it's not that easy to fix or you don't have time to fix it at that moment, at least add a comment (`FIXME` or `TODO`) with a concise explanation of the identified problem. Make sure everybody knows it is broken. It shows others that you care and that they should also do the same when they encounter those kinds of things.
 
-<details>
-    <summary><strong>🙈 View examples of easy-to-catch code smells</strong></summary>
-
-<br/>
-
+Examples of easy-to-catch code smells:
 - ❌ Methods or functions defined with a large number of arguments
 - ❌ Boolean logic that may be hard to understand
 - ❌ Excessive lines of code within a single file
