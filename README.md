@@ -100,11 +100,9 @@ If there is no discernable performance difference and if possible, replace tradi
 4. 💖 Duplication is far cheaper than the wrong abstraction (avoid premature / inappropriate generalization)
 5. Avoid prop drilling by using composition ([Michael Jackson](https://www.youtube.com/watch?v=3XaXKiXtNjw)). `Context` is not the solution for every state sharing problem
 6. Split giant `useEffect`s to smaller independent ones ([KCD: Myths about useEffect](https://epicreact.dev/myths-about-useeffect))
-7. Extract logic to hooks and helper functions
-8. Prefer having mostly primitives as dependencies to `useCallback`, `useMemo`, and `useEffect`
-9. Do not put too many dependencies in `useCallback`, `useMemo`, and `useEffect`
-10. For simplicity, instead of having many `useState`s, consider using `useReducer` if some values of your state rely on other values of your state and previous state
-11. `Context` does not have to be global to your whole app. Put `Context` as low as possible in your component tree. Do this the same way you put variables, comments, states (and code in general) as close as possible to where they're relevant / being used.
+7. Consider extracting complex logic to helper objects/functions 
+8. `Context` does not have to be global to your whole app. Put `Context` as low as possible in your component tree. Do this the same way you put variables, comments, states (and code in general) as close as possible to where they're relevant / being used. [Principle of the lowest common ancestor](https://michaelnthiessen.com/first-principle-of-state-management)
+9. Keep an eye on the latest frameworks and the ideas behind them [Stackoverflow trends](https://trends.stackoverflow.co/?tags=angularjs,angular,reactjs,svelte,vuejs3,vue.js,next.js) is useful for this.
 
 ### 💖 2.1 Avoid state management complexity by removing redundant states
 
